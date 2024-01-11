@@ -5,9 +5,11 @@ import java.util.Collections;
 import java.util.Comparator;
 
 /**
- * Write a description of class BetterBasket here.
+ * BetterBasket extends the class of basket, to allow products ordered to be merged when bought in multiple
+ * quantities as well as sorting them by order number. This class is then implemented in betterCashier to 
+ * ensure betterBasket is returned instead of the original basket.
  * 
- * @author  Your Name
+ * @Max Emery
  * @version 1.0
  */
 public class BetterBasket extends Basket implements Serializable
@@ -16,8 +18,8 @@ public class BetterBasket extends Basket implements Serializable
   @Override
   public boolean add(Product p1) {                                 
 	  
-	  for(Product p2:this){                                                 //
-		  if(p1.getProductNum().equals(p2.getProductNum())) {
+	  for(Product p2:this){                                           //Merging logic, if item is found in basket increment accordingly      
+		  if(p1.getProductNum().equals(p2.getProductNum())) {         
 			  
 		    
 			p2.setQuantity(p2.getQuantity()+ p1.getQuantity());
@@ -29,14 +31,14 @@ public class BetterBasket extends Basket implements Serializable
 	  
   }
   
-  super.add(p1);
+  super.add(p1);                                                //If item is not in basket use superclass add method
   
   
   Collections.sort(this, new ProductComparator());
   return (true);
 }
   
-private static class ProductComparator implements Comparator<Product> {        //comparing product numbers to order numerically
+private static class ProductComparator implements Comparator<Product> {        //Comparing product numbers to order numerically
   @Override
 public int compare(Product p1, Product p2) {
 	

@@ -135,25 +135,25 @@ public class CashierModel extends Observable
   }
   
   
-  public void doDiscount() {
+  public void doDiscount() {                 //Check Basket exists
 	  if(theBasket != null) {
 		  double discountPercentage = 5.0;
 		  
-		  for (Product product:theBasket) {
-			  double originalPrice = product.getPrice();
-			  double discountedPrice = originalPrice * (1.0 - discountPercentage/100.0);
-			  product.setPrice(discountedPrice);
+		  for (Product product:theBasket) {                                                
+			  double originalPrice = product.getPrice();                                 //Retrieve original price
+			  double discountedPrice = originalPrice * (1.0 - discountPercentage/100.0); //Apply discount to basket
+			  product.setPrice(discountedPrice);                                         //Set new discounted price
 			 
 			  
 		  }
 		  
-		  setChanged();
+		  setChanged();                                                                                       //Notify of changes
 		  notifyObservers(String.format("Club member discount applied. New Total: %/2f", calculateTotal()));
 	  }
 	  
   }
   
-  double calculateTotal() {
+  double calculateTotal() {                          //Calculate total price of basket
 	    double total = 0.0;
 	    if (theBasket != null) {
 	        for (Product product : theBasket) {

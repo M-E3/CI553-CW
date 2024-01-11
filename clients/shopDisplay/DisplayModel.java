@@ -24,7 +24,7 @@ public class DisplayModel extends Observable
 {
   private OrderProcessing theOrder = null;
   
-  private Map<String, List<Integer>> previousOrderState = null;  //ME:
+  private Map<String, List<Integer>> previousOrderState = null;  //ME:Initilise previous order state
         
 
   /**
@@ -67,17 +67,17 @@ public class DisplayModel extends Observable
     }
   }
   
-  private void updateDisplayIfChanged()                                                          //ME: *Need to test if this method actually works*
+  private void updateDisplayIfChanged()                                                          //ME: Further testing required to check this method is being implemented correctly
   
   {
 	   try
 	   {
-		   Map<String, List<Integer>> currentOrderState = theOrder.getOrderState();
-		if(!currentOrderState.equals(previousOrderState)) {
+		   Map<String, List<Integer>> currentOrderState = theOrder.getOrderState();         //Get current state from the orderObject
+		if(!currentOrderState.equals(previousOrderState)) {                                 //Check if current order state is different from previous
 			DEBUG.trace("ModelOfDisplay call view");
 			setChanged();
 			notifyObservers();
-			previousOrderState = currentOrderState;
+			previousOrderState = currentOrderState;                                        //Update the previous order state with the current
 		}
 	   }
 	   catch(OrderException e)

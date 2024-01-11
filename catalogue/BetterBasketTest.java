@@ -7,7 +7,7 @@ import org.junit.jupiter.api.Test;
 class BetterBasketTest {
 
 	@Test
-	void testAdd() {
+	void testAdd() {                                              //Create Basket 
 		BetterBasket b = new BetterBasket();
 	    
 		Product p1 = new Product("0002", "Toaster", 10.00, 1);
@@ -17,7 +17,7 @@ class BetterBasketTest {
 		Product p3 = new Product ("0001", "Microwave", 15.00, 1);
 		
 		
-		b.add(p1);  
+		b.add(p1);                                                  //Add items to basket
 		b.add(p2);
 		b.add(p3);
 		
